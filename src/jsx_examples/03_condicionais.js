@@ -5,43 +5,34 @@
 // AND (&&): condicao && <Componente />
 // ============================================
 
-import { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 export default function Condicionais() {
-  const [logado, setLogado] = useState(false);
-  const [visivel, setVisivel] = useState(false);
+  // Troque os valores para ver o efeito
+  const logado = true;
+  const temNotificacoes = false;
 
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Condicionais - Exemplos</Text>
 
-      {/* EXEMPLO 1: Ternário (? :)
-          Troque: true/false para ver o efeito */}
+      {/* EXEMPLO 1: Ternario (? :)
+          Troque: true/false na variavel "logado" para ver o efeito */}
       <View style={styles.exemplo}>
         <Text>Status: {logado ? "Logado" : "Deslogado"}</Text>
-        <TouchableOpacity
-          style={styles.botao}
-          onPress={() => setLogado(!logado)}
-        >
-          <Text style={styles.textoBotao}>
-            {logado ? "Sair" : "Entrar"}
-          </Text>
-        </TouchableOpacity>
+        <Text>
+          {logado ? "Bem-vindo de volta!" : "Faca login para continuar"}
+        </Text>
       </View>
 
       {/* EXEMPLO 2: Operador &&
-          Mostra OU não mostra */}
+          Mostra OU nao mostra */}
       <View style={styles.exemplo}>
-        {visivel && <Text style={styles.destaque}>Texto visível!</Text>}
-        <TouchableOpacity
-          style={styles.botao}
-          onPress={() => setVisivel(!visivel)}
-        >
-          <Text style={styles.textoBotao}>
-            {visivel ? "Ocultar" : "Mostrar"}
-          </Text>
-        </TouchableOpacity>
+        <Text>Notificacoes:</Text>
+        {temNotificacoes && (
+          <Text style={styles.destaque}>Voce tem novas notificacoes!</Text>
+        )}
+        {!temNotificacoes && <Text>Nenhuma notificacao</Text>}
       </View>
     </View>
   );
@@ -71,17 +62,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff3e0",
     borderRadius: 4,
     marginBottom: 8,
-    fontWeight: "bold",
-  },
-  botao: {
-    backgroundColor: "#4285f4",
-    padding: 12,
-    borderRadius: 8,
-    alignItems: "center",
-    marginTop: 8,
-  },
-  textoBotao: {
-    color: "#fff",
     fontWeight: "bold",
   },
 });
