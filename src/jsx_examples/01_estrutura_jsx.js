@@ -1,111 +1,76 @@
 // ============================================
 // AULA 01: Estrutura Basica do JSX
 // ============================================
-// JSX e uma extensao do JavaScript que permite escrever
-// estruturas visuais semelhantes a HTML dentro do codigo.
-// No React Native, usamos componentes como View e Text (nao div/span).
+// JSX permite escrever estruturas visuais no código
+// Sempre retorna UM elemento raiz
 // ============================================
 
 import React from "react";
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
-// -- Regra: todo componente deve retornar UM unico elemento raiz --
-function ExemploElementoRaiz() {
+export default function EstruturaJSX() {
   return (
-    <View style={styles.secao}>
-      <Text style={styles.tituloSecao}>1. Elemento Raiz Unico</Text>
-      <Text style={styles.texto}>Sempre envolva tudo em uma View.</Text>
-      <Text style={styles.texto}>Dois elementos soltos causam erro.</Text>
-    </View>
-  );
-}
+    <View style={styles.container}>
+      <Text style={styles.titulo}>Estrutura JSX - Exemplos</Text>
 
-// -- Fragment: agrupa elementos sem criar View extra --
-// Duas formas: <Fragment>...</Fragment> ou <>...</>
-function ExemploFragment() {
-  return (
-    <View style={styles.secao}>
-      <Text style={styles.tituloSecao}>2. Fragment</Text>
-      <>
-        <Text style={styles.texto}>Dentro de um Fragment.</Text>
-        <Text style={styles.texto}>Sem View extra no layout.</Text>
-      </>
-    </View>
-  );
-}
+      {/* EXEMPLO 1: Elemento raiz único
+          Tudo deve estar dentro de uma View */}
+      <View style={styles.exemplo}>
+        <Text>Linha 1</Text>
+        <Text>Linha 2</Text>
+      </View>
 
-// -- Tags de auto-fechamento: tags sem conteudo usam /> --
-function ExemploAutoFechamento() {
-  return (
-    <View style={styles.secao}>
-      <Text style={styles.tituloSecao}>3. Auto-Fechamento</Text>
-      {/* View sem conteudo: auto-fechamento */}
-      <View style={styles.caixaVazia} />
-      <Text style={styles.legenda}>View vazia acima usa auto-fechamento</Text>
-    </View>
-  );
-}
+      {/* EXEMPLO 2: Fragment (<>...</>)
+          Agrupa elementos sem criar View extra */}
+      <View style={styles.exemplo}>
+        <>
+          <Text>Com Fragment</Text>
+          <Text>Sem View adicional</Text>
+        </>
+      </View>
 
-// -- No JSX, atributos usam camelCase (fontSize, backgroundColor) --
-function ExemploCamelCase() {
-  return (
-    <View style={styles.secao}>
-      <Text style={styles.tituloSecao}>4. Atributos em camelCase</Text>
-      <View
-        style={{ backgroundColor: "#E8F5E9", padding: 12, borderRadius: 8 }}
-      >
-        <Text style={{ fontSize: 14, fontWeight: "bold", textAlign: "center" }}>
-          backgroundColor, fontSize, fontWeight, textAlign
+      {/* EXEMPLO 3: Auto-fechamento
+          Tags vazias usam /> */}
+      <View style={styles.exemplo}>
+        <View style={styles.box} />
+        <Text>Box vazia acima</Text>
+      </View>
+
+      {/* EXEMPLO 4: camelCase
+          Atributos usam camelCase: backgroundColor, fontSize */}
+      <View style={styles.exemplo}>
+        <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+          fontSize, fontWeight
         </Text>
       </View>
     </View>
   );
 }
 
-// -- Para testar, importe no App.js: --
-// import EstruturaJSX from "./jsx_examples/01_estrutura_jsx";
-export default function EstruturaJSX() {
-  return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.titulo}>Aula 01: Estrutura do JSX</Text>
-      <ExemploElementoRaiz />
-      <ExemploFragment />
-      <ExemploAutoFechamento />
-      <ExemploCamelCase />
-    </ScrollView>
-  );
-}
-
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#F5F5F5", paddingTop: 60 },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f5f5f5",
+  },
   titulo: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: "bold",
-    textAlign: "center",
     marginBottom: 20,
-    color: "#212121",
   },
-  secao: {
-    backgroundColor: "#FFF",
-    marginHorizontal: 16,
-    marginBottom: 16,
+  exemplo: {
+    width: "80%",
     padding: 16,
+    marginBottom: 16,
+    backgroundColor: "#fff",
     borderRadius: 8,
-    borderWidth: 1,
-    borderColor: "#E0E0E0",
   },
-  tituloSecao: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#1565C0",
+  box: {
+    width: 50,
+    height: 50,
+    backgroundColor: "#4285f4",
+    borderRadius: 4,
     marginBottom: 8,
   },
-  texto: { fontSize: 14, color: "#424242", lineHeight: 22 },
-  legenda: {
-    fontSize: 12,
-    color: "#757575",
-    fontStyle: "italic",
-    marginTop: 4,
-  },
-  caixaVazia: { height: 40, backgroundColor: "#BBDEFB", borderRadius: 4 },
 });

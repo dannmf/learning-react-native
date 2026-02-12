@@ -1,188 +1,99 @@
 // ============================================
 // COMPONENTE: TouchableOpacity
 // ============================================
-// Detecta toques e diminui a opacidade como feedback visual.
-// E o componente mais comum para criar botoes.
-// Alternativa moderna: Pressable (mais customizavel).
+// Detecta toques e diminui opacidade
+// Componente mais comum para botões
 // ============================================
 
 import { useState } from "react";
-import {
-  View,
-  Text,
-  ScrollView,
-  TouchableOpacity,
-  Alert,
-  StyleSheet,
-} from "react-native";
+import { View, Text, TouchableOpacity, Alert, StyleSheet } from "react-native";
 
-// -- onPress e onLongPress --
-function ExemploBasico() {
-  return (
-    <View style={styles.secao}>
-      <Text style={styles.tituloSecao}>1. onPress e onLongPress</Text>
-
-      <TouchableOpacity
-        style={styles.botao}
-        onPress={() => Alert.alert("Toque", "Voce tocou!")}
-        onLongPress={() => Alert.alert("Longo", "Voce segurou!")}
-      >
-        <Text style={styles.textoBotao}>Toque ou segure</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
-
-// -- activeOpacity: nivel de transparencia ao tocar --
-function ExemploActiveOpacity() {
-  return (
-    <View style={styles.secao}>
-      <Text style={styles.tituloSecao}>2. activeOpacity</Text>
-      <View style={{ gap: 8 }}>
-        {[0.2, 0.5, 0.8].map((valor) => (
-          <TouchableOpacity
-            key={valor}
-            style={styles.botao}
-            activeOpacity={valor}
-          >
-            <Text style={styles.textoBotao}>activeOpacity: {valor}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-    </View>
-  );
-}
-
-// -- disabled: desabilita interacao --
-function ExemploDisabled() {
-  return (
-    <View style={styles.secao}>
-      <Text style={styles.tituloSecao}>3. disabled</Text>
-
-      <TouchableOpacity style={styles.botao} onPress={() => Alert.alert("OK")}>
-        <Text style={styles.textoBotao}>Ativo</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={[styles.botao, styles.botaoDesabilitado]}
-        disabled
-      >
-        <Text style={[styles.textoBotao, { color: "#999" }]}>Desabilitado</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
-
-// -- Contador interativo com useState --
-function ExemploContador() {
+export default function TouchableExemplos() {
   const [contador, setContador] = useState(0);
 
   return (
-    <View style={styles.secao}>
-      <Text style={styles.tituloSecao}>4. Contador com useState</Text>
-      <Text style={{ fontSize: 32, textAlign: "center", marginBottom: 12 }}>
-        {contador}
-      </Text>
-      <View style={{ flexDirection: "row", gap: 8 }}>
+    <View style={styles.container}>
+      <Text style={styles.titulo}>TouchableOpacity - Exemplos</Text>
+
+      {/* EXEMPLO 1: onPress
+          Executado ao tocar */}
+      <View style={styles.exemplo}>
         <TouchableOpacity
-          style={[styles.botao, { flex: 1, backgroundColor: "#E53935" }]}
-          onPress={() => setContador(contador - 1)}
+          style={styles.botao}
+          onPress={() => Alert.alert("Toque", "Você tocou!")}
         >
-          <Text style={styles.textoBotao}>- 1</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.botao, { flex: 1, backgroundColor: "#2E7D32" }]}
-          onPress={() => setContador(contador + 1)}
-        >
-          <Text style={styles.textoBotao}>+ 1</Text>
+          <Text style={styles.textoBotao}>Toque aqui</Text>
         </TouchableOpacity>
       </View>
-    </View>
-  );
-}
 
-// -- Padroes de botao estilizado --
-function ExemploBotoesEstilizados() {
-  return (
-    <View style={styles.secao}>
-      <Text style={styles.tituloSecao}>5. Padroes de Botao</Text>
-      <View style={{ gap: 8 }}>
+      {/* EXEMPLO 2: activeOpacity
+          Troque: 0.2, 0.5, 0.8 (padrão: 0.2) */}
+      <View style={styles.exemplo}>
         <TouchableOpacity
-          style={[styles.botao, { backgroundColor: "#1565C0" }]}
+          style={styles.botao}
+          activeOpacity={0.7}
+          onPress={() => {}}
         >
-          <Text style={styles.textoBotao}>Primario</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.botao, { backgroundColor: "#757575" }]}
-        >
-          <Text style={styles.textoBotao}>Secundario</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.botao, { backgroundColor: "#E53935" }]}
-        >
-          <Text style={styles.textoBotao}>Perigo</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.botaoContorno}>
-          <Text style={{ color: "#1565C0", fontWeight: "bold" }}>Contorno</Text>
+          <Text style={styles.textoBotao}>activeOpacity: 0.7</Text>
         </TouchableOpacity>
       </View>
-    </View>
-  );
-}
 
-// -- Para testar, importe no App.js: --
-// import TouchableExemplos from "./basic_components/03_touchable_opacity";
-export default function TouchableExemplos() {
-  return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.titulo}>Componente: TouchableOpacity</Text>
-      <ExemploBasico />
-      <ExemploActiveOpacity />
-      <ExemploDisabled />
-      <ExemploContador />
-      <ExemploBotoesEstilizados />
-    </ScrollView>
+      {/* EXEMPLO 3: Contador com useState
+          Clique para incrementar */}
+      <View style={styles.exemplo}>
+        <Text style={styles.contador}>{contador}</Text>
+        <View style={{ flexDirection: "row", gap: 8 }}>
+          <TouchableOpacity
+            style={[styles.botao, { flex: 1 }]}
+            onPress={() => setContador(contador - 1)}
+          >
+            <Text style={styles.textoBotao}>-1</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.botao, { flex: 1 }]}
+            onPress={() => setContador(contador + 1)}
+          >
+            <Text style={styles.textoBotao}>+1</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#F5F5F5", paddingTop: 60 },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f5f5f5",
+  },
   titulo: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: "bold",
-    textAlign: "center",
     marginBottom: 20,
-    color: "#212121",
   },
-  secao: {
-    backgroundColor: "#FFF",
-    marginHorizontal: 16,
-    marginBottom: 16,
+  exemplo: {
+    width: "80%",
     padding: 16,
+    marginBottom: 16,
+    backgroundColor: "#fff",
     borderRadius: 8,
-    borderWidth: 1,
-    borderColor: "#E0E0E0",
-  },
-  tituloSecao: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#1565C0",
-    marginBottom: 8,
   },
   botao: {
-    backgroundColor: "#1565C0",
-    paddingVertical: 12,
+    backgroundColor: "#4285f4",
+    padding: 12,
     borderRadius: 8,
     alignItems: "center",
-    marginTop: 4,
   },
-  textoBotao: { color: "#FFF", fontWeight: "bold", fontSize: 14 },
-  botaoDesabilitado: { backgroundColor: "#E0E0E0", marginTop: 8 },
-  botaoContorno: {
-    borderWidth: 2,
-    borderColor: "#1565C0",
-    paddingVertical: 10,
-    borderRadius: 8,
-    alignItems: "center",
+  textoBotao: {
+    color: "#fff",
+    fontWeight: "bold",
+  },
+  contador: {
+    fontSize: 32,
+    textAlign: "center",
+    marginBottom: 12,
+    fontWeight: "bold",
   },
 });

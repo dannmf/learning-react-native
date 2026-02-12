@@ -1,159 +1,97 @@
 // ============================================
 // COMPONENTE: StyleSheet
 // ============================================
-// StyleSheet.create() e a forma recomendada de definir estilos.
-// Vantagens: performance (validado uma vez), organizacao e auto-complete.
-// Declare FORA do componente para evitar recriacao a cada render.
+// StyleSheet.create() é a forma recomendada
+// Melhor performance e organização
 // ============================================
 
 import { useState } from "react";
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-// -- Por que usar StyleSheet.create em vez de objetos inline --
-function ExemploInlineVsStyleSheet() {
-  return (
-    <View style={styles.secao}>
-      <Text style={styles.tituloSecao}>1. Inline vs StyleSheet</Text>
-
-      {/* Inline: recria o objeto a cada render */}
-      <View style={{ backgroundColor: "#FFF3E0", padding: 10, borderRadius: 4, marginBottom: 8 }}>
-        <Text style={{ fontSize: 14 }}>Estilo inline (funciona, mas menos eficiente)</Text>
-      </View>
-
-      {/* StyleSheet: validado e criado uma unica vez */}
-      <View style={styles.exemploBox}>
-        <Text style={styles.texto}>StyleSheet.create (recomendado)</Text>
-      </View>
-    </View>
-  );
-}
-
-// -- Combinando estilos com array --
-function ExemploCombinacao() {
-  return (
-    <View style={styles.secao}>
-      <Text style={styles.tituloSecao}>2. Combinando Estilos</Text>
-
-      {/* Array de estilos: o ultimo sobrescreve propriedades iguais */}
-      <View style={[styles.caixa, styles.caixaDestacada]}>
-        <Text style={styles.textoClaro}>styles.caixa + styles.caixaDestacada</Text>
-      </View>
-
-      <View style={[styles.caixa, { backgroundColor: "#2E7D32" }]}>
-        <Text style={styles.textoClaro}>styles.caixa + estilo inline</Text>
-      </View>
-    </View>
-  );
-}
-
-// -- Estilos condicionais --
-function ExemploCondicional() {
-  const [selecionado, setSelecionado] = useState(false);
+export default function StyleSheetExemplos() {
+  const [ativo, setAtivo] = useState(false);
 
   return (
-    <View style={styles.secao}>
-      <Text style={styles.tituloSecao}>3. Estilos Condicionais</Text>
+    <View style={styles.container}>
+      <Text style={styles.titulo}>StyleSheet - Exemplos</Text>
 
-      {/* selecionado && styles.ativo so aplica se selecionado for true */}
-      <TouchableOpacity
-        style={[styles.botao, selecionado && styles.botaoAtivo]}
-        onPress={() => setSelecionado(!selecionado)}
-      >
-        <Text style={[styles.textoBotao, selecionado && { color: "#FFF" }]}>
-          {selecionado ? "Selecionado" : "Nao selecionado"}
-        </Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
-
-// -- position: absolute vs relative --
-function ExemploPosicionamento() {
-  return (
-    <View style={styles.secao}>
-      <Text style={styles.tituloSecao}>4. Posicionamento</Text>
-
-      {/* position relative e o padrao */}
-      <View style={{ position: "relative", width: 100, height: 100, backgroundColor: "#E3F2FD", borderRadius: 8 }}>
-        <Text style={{ padding: 4 }}>Base</Text>
-
-        {/* position absolute posiciona em relacao ao pai relativo */}
-        <View style={{
-          position: "absolute", top: -5, right: -5,
-          backgroundColor: "#E53935", width: 24, height: 24,
-          borderRadius: 12, justifyContent: "center", alignItems: "center",
-        }}>
-          <Text style={{ color: "#FFF", fontSize: 12, fontWeight: "bold" }}>3</Text>
+      {/* EXEMPLO 1: StyleSheet vs inline
+          StyleSheet é mais eficiente */}
+      <View style={styles.exemplo}>
+        <View style={{ backgroundColor: "#fff3e0", padding: 10, marginBottom: 8 }}>
+          <Text>Inline (menos eficiente)</Text>
+        </View>
+        <View style={styles.box}>
+          <Text>StyleSheet (recomendado)</Text>
         </View>
       </View>
-      <Text style={styles.legenda}>
-        Badge com position absolute no canto.
-      </Text>
-    </View>
-  );
-}
 
-// -- StyleSheet.hairlineWidth --
-function ExemploHairline() {
-  return (
-    <View style={styles.secao}>
-      <Text style={styles.tituloSecao}>5. hairlineWidth</Text>
-      <Text style={styles.texto}>Linha fina do dispositivo:</Text>
-      <View style={{ height: StyleSheet.hairlineWidth, backgroundColor: "#424242", marginVertical: 8 }} />
-      <Text style={styles.legenda}>
-        StyleSheet.hairlineWidth = menor linha visivel na tela.
-      </Text>
-    </View>
-  );
-}
+      {/* EXEMPLO 2: Combinando estilos
+          Use array [...] */}
+      <View style={styles.exemplo}>
+        <View style={[styles.box, styles.boxDestacado]}>
+          <Text>Estilos combinados</Text>
+        </View>
+      </View>
 
-// -- Para testar, importe no App.js: --
-// import StyleSheetExemplos from "./basic_components/08_stylesheet";
-export default function StyleSheetExemplos() {
-  return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.titulo}>StyleSheet.create()</Text>
-      <ExemploInlineVsStyleSheet />
-      <ExemploCombinacao />
-      <ExemploCondicional />
-      <ExemploPosicionamento />
-      <ExemploHairline />
-    </ScrollView>
+      {/* EXEMPLO 3: Estilos condicionais
+          ativo && styles.ativo */}
+      <View style={styles.exemplo}>
+        <TouchableOpacity
+          style={[styles.botao, ativo && styles.botaoAtivo]}
+          onPress={() => setAtivo(!ativo)}
+        >
+          <Text style={styles.textoBotao}>
+            {ativo ? "Ativo" : "Inativo"}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#F5F5F5", paddingTop: 60 },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f5f5f5",
+  },
   titulo: {
-    fontSize: 22, fontWeight: "bold", textAlign: "center",
-    marginBottom: 20, color: "#212121",
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 20,
   },
-  secao: {
-    backgroundColor: "#FFF", marginHorizontal: 16, marginBottom: 16,
-    padding: 16, borderRadius: 8, borderWidth: 1, borderColor: "#E0E0E0",
+  exemplo: {
+    width: "80%",
+    padding: 16,
+    marginBottom: 16,
+    backgroundColor: "#fff",
+    borderRadius: 8,
   },
-  tituloSecao: { fontSize: 16, fontWeight: "bold", color: "#1565C0", marginBottom: 8 },
-  legenda: { fontSize: 12, color: "#757575", fontStyle: "italic", marginTop: 4 },
-  texto: { fontSize: 14, color: "#424242" },
-  textoClaro: { color: "#FFF", fontSize: 14 },
-  exemploBox: {
-    backgroundColor: "#E8F5E9", padding: 10, borderRadius: 4,
+  box: {
+    backgroundColor: "#e8f5e9",
+    padding: 10,
+    borderRadius: 4,
   },
-  caixa: {
-    padding: 12, borderRadius: 8, marginBottom: 8,
-    backgroundColor: "#1565C0",
-  },
-  caixaDestacada: {
-    backgroundColor: "#E53935",
+  boxDestacado: {
+    backgroundColor: "#4285f4",
     borderWidth: 2,
-    borderColor: "#B71C1C",
+    borderColor: "#1565c0",
   },
   botao: {
-    padding: 12, borderRadius: 8, alignItems: "center",
-    backgroundColor: "#E0E0E0", borderWidth: 2, borderColor: "#1565C0",
+    padding: 12,
+    borderRadius: 8,
+    alignItems: "center",
+    backgroundColor: "#e0e0e0",
+    borderWidth: 2,
+    borderColor: "#4285f4",
   },
   botaoAtivo: {
-    backgroundColor: "#1565C0",
+    backgroundColor: "#4285f4",
   },
-  textoBotao: { fontWeight: "bold", fontSize: 14, color: "#1565C0" },
+  textoBotao: {
+    fontWeight: "bold",
+    color: "#333",
+  },
 });
