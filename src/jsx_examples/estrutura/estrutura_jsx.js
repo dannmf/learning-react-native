@@ -1,8 +1,8 @@
 // ============================================
-// AULA 01: Estrutura Basica do JSX
+// AULA: Estrutura Basica do JSX
 // ============================================
-// JSX permite escrever estruturas visuais no código
-// Sempre retorna UM elemento raiz
+// MOMENTO 1 - Conceitos fundamentais
+// Live coding: professor escreve, alunos acompanham
 // ============================================
 
 import { View, Text, StyleSheet } from "react-native";
@@ -10,34 +10,42 @@ import { View, Text, StyleSheet } from "react-native";
 export default function EstruturaJSX() {
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>Estrutura JSX - Exemplos</Text>
+      <Text style={styles.titulo}>Estrutura JSX</Text>
 
-      {/* EXEMPLO 1: Elemento raiz único
-          Tudo deve estar dentro de uma View */}
+      {/* ETAPA 1: Elemento raiz unico
+          Dica: tente remover a View pai e veja o erro
+          Todo JSX precisa de UM elemento envolvendo tudo */}
       <View style={styles.exemplo}>
+        <Text style={styles.subtitulo}>1. Elemento Raiz</Text>
         <Text>Linha 1</Text>
         <Text>Linha 2</Text>
       </View>
 
-      {/* EXEMPLO 2: Fragment (<>...</>)
-          Agrupa elementos sem criar View extra */}
+      {/* ETAPA 2: Fragment
+          Dica: troque <></> por <View></View> e compare
+          Fragment agrupa elementos sem criar uma View extra na tela */}
       <View style={styles.exemplo}>
+        <Text style={styles.subtitulo}>2. Fragment</Text>
         <>
           <Text>Com Fragment</Text>
           <Text>Sem View adicional</Text>
         </>
       </View>
 
-      {/* EXEMPLO 3: Auto-fechamento
-          Tags vazias usam /> */}
+      {/* ETAPA 3: Auto-fechamento
+          Dica: troque width: 50, height: 50 por outros valores
+          Componentes sem filhos usam /> para fechar */}
       <View style={styles.exemplo}>
+        <Text style={styles.subtitulo}>3. Auto-fechamento</Text>
         <View style={styles.box} />
         <Text>Box vazia acima</Text>
       </View>
 
-      {/* EXEMPLO 4: camelCase
-          Atributos usam camelCase: backgroundColor, fontSize */}
+      {/* ETAPA 4: camelCase nos atributos
+          Dica: troque fontSize para 12, 20, 28
+          Em JSX usamos camelCase: fontSize, fontWeight, backgroundColor */}
       <View style={styles.exemplo}>
+        <Text style={styles.subtitulo}>4. camelCase</Text>
         <Text style={{ fontSize: 16, fontWeight: "bold" }}>
           fontSize, fontWeight
         </Text>
@@ -57,6 +65,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 20,
+  },
+  subtitulo: {
+    fontSize: 14,
+    fontWeight: "bold",
+    color: "#4285f4",
+    marginBottom: 8,
   },
   exemplo: {
     width: "80%",

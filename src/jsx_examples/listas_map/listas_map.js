@@ -1,14 +1,15 @@
 // ============================================
-// AULA 05: Listas e o Metodo .map()
+// AULA: Listas e o Metodo .map()
 // ============================================
-// .map() transforma array em JSX
-// Cada elemento PRECISA de uma key única
+// MOMENTO 1 - Conceitos fundamentais
+// Live coding: professor escreve, alunos acompanham
 // ============================================
 
 import { View, Text, StyleSheet } from "react-native";
 
 export default function ListasEMap() {
-  const frutas = ["Maçã", "Banana", "Laranja"];
+  // Dados para os exemplos
+  const frutas = ["Maca", "Banana", "Laranja"];
 
   const alunos = [
     { id: 1, nome: "Ana", nota: 9.5 },
@@ -18,11 +19,13 @@ export default function ListasEMap() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>Listas e .map() - Exemplos</Text>
+      <Text style={styles.titulo}>Listas e .map()</Text>
 
-      {/* EXEMPLO 1: .map() com strings
-          Cada item precisa de key */}
+      {/* ETAPA 1: .map() com array de strings
+          Dica: adicione mais frutas no array e veja a lista crescer
+          .map() transforma cada item do array em um elemento JSX */}
       <View style={styles.exemplo}>
+        <Text style={styles.subtitulo}>1. map() com strings</Text>
         {frutas.map((fruta, indice) => (
           <Text key={indice}>
             {indice + 1}. {fruta}
@@ -30,9 +33,11 @@ export default function ListasEMap() {
         ))}
       </View>
 
-      {/* EXEMPLO 2: .map() com objetos
-          Use id como key */}
+      {/* ETAPA 2: .map() com array de objetos
+          Dica: adicione mais alunos no array
+          Use o id do objeto como key (melhor que indice) */}
       <View style={styles.exemplo}>
+        <Text style={styles.subtitulo}>2. map() com objetos</Text>
         {alunos.map((aluno) => (
           <View key={aluno.id} style={styles.linha}>
             <Text>{aluno.nome}</Text>
@@ -41,14 +46,15 @@ export default function ListasEMap() {
         ))}
       </View>
 
-      {/* EXEMPLO 3: .filter() + .map()
-          Filtre antes de mapear */}
+      {/* ETAPA 3: .filter() + .map()
+          Dica: troque 7 por 8, 6, 9 para mudar o filtro
+          Use filter() antes do map() para mostrar apenas alguns itens */}
       <View style={styles.exemplo}>
-        <Text style={styles.subtitulo}>Aprovados (nota ≥ 7):</Text>
+        <Text style={styles.subtitulo}>3. filter() + map()</Text>
         {alunos
           .filter((a) => a.nota >= 7)
           .map((a) => (
-            <Text key={a.id}>✓ {a.nome}</Text>
+            <Text key={a.id}>Aprovado: {a.nome}</Text>
           ))}
       </View>
     </View>
@@ -67,16 +73,18 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 20,
   },
+  subtitulo: {
+    fontSize: 14,
+    fontWeight: "bold",
+    color: "#4285f4",
+    marginBottom: 8,
+  },
   exemplo: {
     width: "80%",
     padding: 16,
     marginBottom: 16,
     backgroundColor: "#fff",
     borderRadius: 8,
-  },
-  subtitulo: {
-    fontWeight: "bold",
-    marginBottom: 8,
   },
   linha: {
     flexDirection: "row",

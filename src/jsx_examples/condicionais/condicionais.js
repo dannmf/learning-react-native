@@ -1,33 +1,37 @@
 // ============================================
-// AULA 03: Renderizacao Condicional
+// AULA: Renderizacao Condicional
 // ============================================
-// Ternário: condicao ? <A /> : <B />
-// AND (&&): condicao && <Componente />
+// MOMENTO 1 - Conceitos fundamentais
+// Live coding: professor escreve, alunos acompanham
 // ============================================
 
 import { View, Text, StyleSheet } from "react-native";
 
 export default function Condicionais() {
-  // Troque os valores para ver o efeito
+  // Variaveis para os exemplos
   const logado = true;
   const temNotificacoes = false;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>Condicionais - Exemplos</Text>
+      <Text style={styles.titulo}>Condicionais</Text>
 
-      {/* EXEMPLO 1: Ternario (? :)
-          Troque: true/false na variavel "logado" para ver o efeito */}
+      {/* ETAPA 1: Ternario (? :)
+          Dica: troque true por false na variavel "logado"
+          Ternario escolhe entre dois valores: condicao ? valorA : valorB */}
       <View style={styles.exemplo}>
+        <Text style={styles.subtitulo}>1. Ternario</Text>
         <Text>Status: {logado ? "Logado" : "Deslogado"}</Text>
         <Text>
           {logado ? "Bem-vindo de volta!" : "Faca login para continuar"}
         </Text>
       </View>
 
-      {/* EXEMPLO 2: Operador &&
-          Mostra OU nao mostra */}
+      {/* ETAPA 2: Operador && (AND)
+          Dica: troque false por true na variavel "temNotificacoes"
+          && mostra o componente SOMENTE se a condicao for true */}
       <View style={styles.exemplo}>
+        <Text style={styles.subtitulo}>2. Operador &&</Text>
         <Text>Notificacoes:</Text>
         {temNotificacoes && (
           <Text style={styles.destaque}>Voce tem novas notificacoes!</Text>
@@ -49,6 +53,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 20,
+  },
+  subtitulo: {
+    fontSize: 14,
+    fontWeight: "bold",
+    color: "#4285f4",
+    marginBottom: 8,
   },
   exemplo: {
     width: "80%",
