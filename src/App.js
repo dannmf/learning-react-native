@@ -8,6 +8,13 @@
 import { View, Text, StyleSheet } from "react-native";
 import ExercicioView09 from "./basic_components/exercises/view_exercises/exercicio_09";
 import ExercicioView10 from "./basic_components/exercises/view_exercises/exercicio_10";
+import ExercicioView01 from "./basic_components/exercises/view_exercises/exercicio_01";
+import ExercicioView02 from "./basic_components/exercises/view_exercises/exercicio_02";
+import ExercicioView03 from "./basic_components/exercises/view_exercises/exercicio_03";
+import ExercicioView04 from "./basic_components/exercises/view_exercises/exercicio_04";
+import ExercicioView05 from "./basic_components/exercises/view_exercises/exercicio_05";
+import ExercicioView07 from "./basic_components/exercises/view_exercises/exercicio_07";
+import ExercicioView08 from "./basic_components/exercises/view_exercises/exercicio_08";
 
 export default function App() {
   return (

@@ -29,22 +29,23 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   redBox: {
-    alignSelf: "stretch",
     height: 80,
+    width: 80,
+
     backgroundColor: "red",
     alignItems: "center",
     justifyContent: "center",
   },
   greenBox: {
-    alignSelf: "stretch",
     height: 80,
+    width: 80,
     backgroundColor: "green",
     alignItems: "center",
     justifyContent: "center",
   },
   blueBox: {
     height: 80,
-    alignSelf: "stretch",
+    width: 80,
     backgroundColor: "blue",
     alignItems: "center",
     justifyContent: "center",

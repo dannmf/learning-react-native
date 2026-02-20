@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     gap: 20,
+    padding: 20,
   },
   textStyle: {
     color: "white",
