@@ -1,18 +1,18 @@
 // ============================================
-// AULA:
+// COMPONENTE:
 // ============================================
 // SCAFFOLD - Arquivo base para a aula
 // Os alunos recebem este arquivo ANTES da aula
 // ============================================
 
 import { View, Text, StyleSheet } from "react-native";
-import ExercicioView09 from "./basic_components/exercises/view_exercises/exercicio_09";
-import ExercicioView10 from "./basic_components/exercises/view_exercises/exercicio_10";
 
-export default function App() {
+export default function Scaffold() {
   return (
     <View style={styles.container}>
-      <ExercicioView10 />
+      <Text style={styles.titulo}></Text>
+
+      {/* VAMOS CONSTRUIR AQUI */}
     </View>
   );
 }
@@ -20,6 +20,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#f5f5f5",
   },
   titulo: {
