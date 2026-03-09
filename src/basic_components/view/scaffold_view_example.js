@@ -1,17 +1,11 @@
-// ============================================
-// AULA:
-// ============================================
-// SCAFFOLD - Arquivo base para a aula
-// Os alunos recebem este arquivo ANTES da aula
-// ============================================
-
 import { View, Text, StyleSheet } from "react-native";
-import ViewExemplos01 from "./basic_components/view/view";
 
-export default function App() {
+export default function ViewScaffold() {
   return (
     <View style={styles.container}>
-      <ViewExemplos01 />
+      <Text style={styles.titulo}>View e Flexbox</Text>
+
+      <View style={styles.exemplo}></View>
     </View>
   );
 }
@@ -19,6 +13,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#f5f5f5",
   },
   titulo: {
@@ -38,5 +34,18 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     backgroundColor: "#fff",
     borderRadius: 8,
+  },
+  box: {
+    width: 50,
+    height: 50,
+    backgroundColor: "#4285f4",
+    borderRadius: 4,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  textBox: {
+    color: "#fff",
+    fontSize: 12,
+    fontWeight: "bold",
   },
 });

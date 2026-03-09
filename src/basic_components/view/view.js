@@ -7,7 +7,7 @@
 
 import { View, Text, StyleSheet } from "react-native";
 
-export default function ViewExemplos() {
+export default function ViewExemplos01() {
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>View e Flexbox</Text>
@@ -29,7 +29,13 @@ export default function ViewExemplos() {
           justifyContent alinha os filhos no eixo principal */}
       <View style={styles.exemplo}>
         <Text style={styles.subtitulo}>2. justifyContent</Text>
-        <View style={{ flexDirection: "row", justifyContent: "space-between", height: 60 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "",
+            height: 60,
+          }}
+        >
           <View style={styles.box} />
           <View style={styles.box} />
           <View style={styles.box} />
@@ -41,7 +47,14 @@ export default function ViewExemplos() {
           alignItems alinha os filhos no eixo cruzado */}
       <View style={styles.exemplo}>
         <Text style={styles.subtitulo}>3. alignItems</Text>
-        <View style={{ flexDirection: "row", alignItems: "center", height: 80, gap: 8 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            height: 80,
+            gap: 8,
+          }}
+        >
           <View style={[styles.box, { height: 30 }]} />
           <View style={[styles.box, { height: 50 }]} />
           <View style={[styles.box, { height: 40 }]} />
@@ -66,7 +79,7 @@ export default function ViewExemplos() {
       <View style={styles.exemplo}>
         <Text style={styles.subtitulo}>5. padding e margin</Text>
         <View style={{ backgroundColor: "#ddd", padding: 20 }}>
-          <View style={[styles.box, { margin: 10 }]} />
+          <View style={[styles.box, { marginBottom: 20 }]} />
         </View>
       </View>
     </View>
