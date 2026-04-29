@@ -10,7 +10,10 @@
  * COMPORTAMENTOS ESPERADOS:
  * 1. O usuário digita no campo de texto
  * 2. Ao clicar em Enviar, a mensagem aparece abaixo
- * 3. O campo de texto é limpo após o envio
+ * 3. O campo de texto é limpo após o envioconst styles = StyleSheet.create({
+  container: { flex: 1, justifyContent: "center", alignItems: "center" },
+  texto: { fontSize: 24, marginBottom: 20 },
+});
  *
  * NOVIDADE — onChangeText:
  * O TextInput tem uma prop chamada onChangeText.
