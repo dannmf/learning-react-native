@@ -5,14 +5,16 @@
 // Os alunos recebem este arquivo ANTES da aula
 // ============================================
 
-import { View, Text, StyleSheet } from "react-native";
-import ViewExemplos01 from "./basic_components/view/view";
+import { StyleSheet, View } from "react-native";
+import Cronometro from "./04_react_hooks/cronometro_example";
+import { NavigationContainer } from "@react-navigation/native";
+import StackNavigator from "./06_navigation/examples/stack_navigation";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <ViewExemplos01 />
-    </View>
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
   );
 }
 

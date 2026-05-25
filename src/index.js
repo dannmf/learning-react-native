@@ -1,3 +1,8 @@
+// IMPORTANTE: react-native-gesture-handler deve ser o primeiro import do app
+// O Drawer Navigator depende dele e o modulo nativo precisa ser inicializado
+// antes de qualquer outro codigo ser executado
+import "react-native-gesture-handler";
+
 import { registerRootComponent } from "expo";
 
 import App from "./App";
